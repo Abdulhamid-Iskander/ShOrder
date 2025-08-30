@@ -6,7 +6,7 @@ class SplashScreen extends StatefulWidget {
   final bool enableAnimation;
   const SplashScreen({
     super.key,
-    this.durationInSconds = 3,
+    this.durationInSconds = 5,
     this.enableAnimation = true,
   });
   @override
@@ -46,18 +46,33 @@ class _SplashScreenState extends State<SplashScreen>
       ).pushReplacement(MaterialPageRoute(builder: (context) => const Login()));
     });
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: widget.enableAnimation
-            ? FadeTransition(
-                opacity: _animation,
-                child: Image.asset(
-                  'assets/images/logo.png',
-                  width: 200,
-                  height: 200,
-                ),
-              )
-            : Image.asset('assets/images/logo.png', width: 200, height: 200),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.orange.shade600,
+              Colors.orange.shade800,
+              Colors.blue.shade800,
+              Colors.blue.shade900,
+            ],
+          ),
+        ),
+        child: Center(
+          child: widget.enableAnimation
+              ? FadeTransition(
+                  opacity: _animation,
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    width: 200,
+                    height: 200,
+                  ),
+                )
+              : Image.asset('assets/images/logo.png', width: 200, height: 200),
+        ),
       ),
     );
   }
