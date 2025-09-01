@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'signup.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -38,6 +39,7 @@ class Login extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Icon(Icons.account_circle, size: 100, color: Colors.white),
             TextField(
               decoration: InputDecoration(
                 labelText: "User Name",
@@ -90,7 +92,11 @@ class Login extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const Signup()),
+                );
+              },
               child: Text(
                 'Create New Account',
                 style: TextStyle(color: Colors.white),
